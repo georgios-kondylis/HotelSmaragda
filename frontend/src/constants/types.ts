@@ -1,11 +1,13 @@
 export type GlobalContextType = {
-  isDarkMode: boolean;
-  toggleDarkMode: () => void;
+  isDarkMode?: boolean;
+  toggleDarkMode?: () => void;
 
-  isMobileMenuOpen: boolean;
-  toggleMobileMenu: () => void;
-  customBG: string
-
+  isMobileMenuOpen?: boolean;
+  toggleMobileMenu?: () => void;
+  customBG?: string
+  coloredText?: string
+  logo?: string
+  recruiter?: string
 };
 
 export type Movie = {
