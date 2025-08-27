@@ -3,58 +3,56 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/all";
 import { useGlobalProps } from "../../GlobalContext";
-import VideoBg from "../ui/VideoBg";
-import { logo, recruiter } from "../../constants";
+import { BookingsBar, BookingsBarMobile } from "../../exports";
+import { useMediaQuery } from "react-responsive";
 
 gsap.registerPlugin(useGSAP);
 
 const Home = () => {
-  const { isDarkMode} = useGlobalProps();
-
-  useGSAP(() => {
-    const tl = gsap.timeline({
-      defaults: { ease: "power3.out", duration: 1 },
-    });
-
-    tl.from(".fade-container", { opacity: 0, scale: 0.95 })
-      .from(".title", { y: -60, opacity: 0 }, "-=0.6")
-      .from(".name", { x: -80, opacity: 0 }, "-=0.5")
-      .from(".subtitle", { y: 40, opacity: 0 }, "-=0.5")
-      .to(".name", {
-        scale: 1.05,
-        repeat: 1,
-        yoyo: true,
-        duration: 0.6,
-        ease: "power1.inOut",
-      });
-  }, []);
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   return (
-    <section className={`w-full flex justify-center`} >
-     <VideoBg />
-     <main className="flex justify-center mainPX MAX_W w-full h-full mt-[50px]">
+    <>
+      <section className="relative w-full min-h-screen flex flex-col items-center mainPX justify-between bg-[url('/bgs/testbg.jpeg')] bg-cover bg-center">
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-[#00000052] z-0" />
 
-        <div className="content-wrapper p-[2px] rounded-[16px]">
-          <div className={`fade-container text-white text-center p-8 rounded-[12px] shadow-xl max-w-2xl
-            ${isDarkMode ? 'bg-[#050505] border border-[#58585848]' : 'bg-gradient-to-l from-[#e7e7e7] to-[#bebebe] border'}`}>
-            
-            <h1 className={`title text-4xl sm:text-5xl md:text-5xl ${isDarkMode ? 'text-gradient' : 'textShadowBl'}`}>
-              Hello {recruiter}
+        {/* Main Hero */}
+        <main className="relative flex justify-center MAX_W w-full h-full mt-[15%] z-10">
+          <div id="InfoContainer" className="flex flex-col items-center gap-4 text-white text-center"  >
+            {/* Stars */}
+            <div id="Stars" className="flex gap-1">
+              {[1, 2, 3, 4, 5].map((_, i) => ( <img key={i} src="/icons/star.png" className="w-[20px]" alt="star" /> ))}
+            </div>
+
+            {/* Sub-title */}
+            <h1 className="tracking-[1px] font-extralight uppercase">
+              Luxury Hotel & Best Resort
             </h1>
-            <h2 className={`name text-xl sm:text-3xl font-medium mt-4 ${isDarkMode ? 'text-gradient' : 'textShadowBl'}`}>
-              CEO of {logo}
-            </h2>
-            <p className={`subtitle mt-6 text-sm sm:text-lg ${isDarkMode ? 'text-gradient' : 'textShadowBl'}`}>
-              I built this simple project to showcase clean architecture and simple
-              frontend animation
-            </p>
 
+            {/* Title */}
+            <h5 className="tracking-[1px] font-light text-[50px] md:text-[60px] leading-tight">
+              Enjoy a Luxury <br /> Experience
+            </h5>
+
+            {/* CTA */}
+            <button className="border border-white px-6 py-2 mt-4 text-sm uppercase tracking-wider hover:bg-white hover:text-black transition">
+              Rooms & Suites
+            </button>
           </div>
-        </div>
-        
-      </main>
+        </main>
 
-    </section>
+        {/* Desktop bookings bar */}
+        {!isMobile && <BookingsBar />}
+      </section>
+
+      {/* Mobile bookings bar */}
+      {isMobile && (
+        <div className="relative z-50">
+          <BookingsBarMobile />
+        </div>
+      )}
+    </>
   );
 };
 

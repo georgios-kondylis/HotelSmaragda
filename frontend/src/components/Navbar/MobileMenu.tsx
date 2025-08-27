@@ -1,27 +1,20 @@
 import { useGlobalProps } from "../../GlobalContext";
-import { navLinks } from "../../constants";
+import { navLinks, logo } from "./utils";
 import { NavLink } from "react-router-dom";
-import VideoBg from "../ui/VideoBg";
-import { logo } from "../../constants";
+
 
 const MobileMenu = () => {
-  const { isMobileMenuOpen, toggleMobileMenu, isDarkMode, customBG, coloredText } =
+  const { isMobileMenuOpen, toggleMobileMenu, } =
     useGlobalProps();
 
   return (
     <>
-      {isMobileMenuOpen /* Backdrop */ && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
-          onClick={toggleMobileMenu}
-        ></div>
-      )}
+      {isMobileMenuOpen /* Backdrop */ && <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40" onClick={toggleMobileMenu}/>}
 
       {/* Slide-in menu */}
       <div className={`fixed top-0 right-0 h-full w-[50%] max-w-sm z-50 transition1 mainPX 
-        ${isMobileMenuOpen ? `translate-x-0 ${isDarkMode && 'shadow-[0px_-10px_10px_#00ffee60]'}` : "translate-x-full"}
-        ${customBG}`}
+        ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-[2000px]'}`}
       >
-        <VideoBg />
 
         {/* ✅ This wrapper ensures all content sits above the video */}
         <div className={`relative z-10`}>
@@ -36,13 +29,7 @@ const MobileMenu = () => {
           <ul className="flex flex-col mainPX py-4">
             {navLinks.map((link, i) => (
               <NavLink key={i} to={link.href} onClick={toggleMobileMenu} className="flex w-full relative group">
-                <div className="text-[40px] max-md:text-[30px] font-bold group-hover:opacity-[8%] py-2 transition1 group-hover:translate-y-[-15px]">
-                  {link.title}
-                </div>
-                <p className={`absolute bottom-2 text-[18px] tracking-[50px] transition1 opacity-0 pointer-events-none 
-                               group-hover:tracking-wide group-hover:opacity-100 ${coloredText} ${isDarkMode && 'txtBrightBlue'} `}>
-                  {link.title}
-                </p>
+              {link.title}
               </NavLink>
             ))}
           </ul>

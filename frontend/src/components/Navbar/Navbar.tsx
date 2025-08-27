@@ -3,28 +3,29 @@ import { useGlobalProps } from "../../GlobalContext";
 import { useMediaQuery } from "react-responsive";
 
 import { NavLink } from "react-router-dom";
-import { navLinks } from "../../constants";
-import SwichBtn from "../ui/SwichBtn";
+
 import MobileMenu from "./MobileMenu";
-import { logo } from "../../constants";
+import { navLinks } from "./utils";
+import ChooseLanguage from "./ChooseLanguage";
 
 const Navbar = () => {
-  const { isDarkMode, customBG, toggleMobileMenu, } = useGlobalProps();
+  const { toggleMobileMenu, } = useGlobalProps();
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   return (
-    <nav className={`${customBG} ${isDarkMode? 'shadow-[0_5px_10px_#00ffee30]' : ''} fixed`}>
+    <nav className={`fixed top-0 w-full flex justify-center z-50`}>
       
-      <div className="w-full flex justify-between items-center mainPX MAX_W">
-        <h1 className="">{logo}</h1>
+      <div className="w-full flex justify-between items-center mainPX MAX_W 
+            border border-white/10 py-2 m-[10px] rounded-[12px] 
+            backdrop-blur-[20px] bg-black/40 shadow-lg">
+
+        <img id="LOGO" src="/icons/logoPlainWhite.png" className="w-[200px]" alt="" />
 
         <ul className="max-md:hidden flex items-center gap-2 absolute left-1/2 -translate-x-1/2">
           {navLinks.map((link, i) => {
             return (
               <NavLink  key={i} to={link.href} className={({ isActive }) =>
-                `${isDarkMode? 'hover:text-[#00ffee]' : 'hover:text-[#ff8000] '} transition-colors ${
-                  isActive ? 
-                  `${isDarkMode ? "txtBrightBlueSm txtMainBlue" : "txtBrightOrangeSm txtMainOrange "}  font-semibold` : "text-inherit"}`
+                `${isActive ? `` : ""} text-[#e1e1e1] hover:text-white tracking-[1px] font-extralight`
                }
               >
               {link.title}
@@ -34,8 +35,8 @@ const Navbar = () => {
         </ul>
 
         <div className="flex items-center gap-3">
-          <SwichBtn />
-          {isMobile &&( <i className={`${customBG} text-2xl fa-solid fa-bars cursor-pointer`} onClick={toggleMobileMenu}> </i>)}
+          <ChooseLanguage/>
+          {isMobile &&( <i className={`text-2xl fa-solid fa-bars cursor-pointer`} onClick={toggleMobileMenu}> </i>)}
         </div>
 
         <MobileMenu  />
