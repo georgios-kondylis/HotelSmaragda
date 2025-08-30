@@ -13,7 +13,7 @@ const Navbar = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   return (
-    <nav className={`fixed top-0 w-full flex justify-center z-50`}>
+    <nav className={`fixed top-0 w-full flex justify-center z-[99]`}>
       
       <div className="w-full flex justify-between items-center mainPX MAX_W 
             border border-white/10 py-2 m-[10px] rounded-[12px] 

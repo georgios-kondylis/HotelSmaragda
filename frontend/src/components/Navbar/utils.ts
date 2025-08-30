@@ -1,9 +1,9 @@
 // util.ts
 
 export const navLinks = [
-  { title: 'Home', href: '/' },
-  { title: 'About', href: '/about' },
-  { title: 'Rooms', href: '/rooms' },
+  { title: 'Home', href: '#' },
+  { title: 'About', href: '#about' },
+  { title: 'Rooms', href: '#rooms' },
   { title: 'Contact', href: '#contact' },
 ]
 export const languages = [

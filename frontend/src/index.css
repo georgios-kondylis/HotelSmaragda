@@ -1,6 +1,7 @@
-@import "tailwindcss";
+/* Import Google Fonts first */
 @import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Lato:wght@400;500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap');
+@import "tailwindcss";
 
 * { box-sizing: border-box; }
 html, body {
@@ -19,14 +20,16 @@ section {@apply pt-[60px]}
 
 .transition1 { @apply transition-all duration-300 ease-in-out;}
 .transition2 { @apply transition-all duration-500 ease-in-out}
+.transition3 { @apply transition-all duration-1000 ease-in-out}
 
 .mainGreen {@apply  bg-[#2E4A35]}
-.mainBeige {@apply bg-[#ebb688]}
-.mainBeigeDark {@apply bg-[#ebb688]}
+.mainBeige {@apply bg-[#fff7f1]}
+.mainCream {@apply bg-[#fff7f1]}
+.mainBeigeDark {@apply bg-[#b99154]}
 .mainDark {@apply bg-[#2d2d2b]}
 .mainWhite {@apply bg-[#F9F9F7]}
 
-h5 {font-family: 'Times New Roman', Times, serif;}
+h5 {font-family: 'Playfair Display', serif;}
 
 /* ------------- BOOKINGS BAR ------------- */
 .react-datepicker { font-family: inherit; border: none; box-shadow: 0 4px 20px rgba(0,0,0,0.15);}

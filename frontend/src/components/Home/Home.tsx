@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/all";
 import { useGlobalProps } from "../../GlobalContext";
-import { BookingsBar, BookingsBarMobile } from "../../exports";
+import { BookingsBar, BookingsBarMobile, FiveStars } from "../../exports";
 import { useMediaQuery } from "react-responsive";
 
 gsap.registerPlugin(useGSAP);
@@ -13,7 +13,7 @@ const Home = () => {
 
   return (
     <>
-      <section className="relative w-full min-h-screen flex flex-col items-center mainPX justify-between bg-[url('/bgs/testbg.jpeg')] bg-cover bg-center">
+      <section id="section1" className="relative w-full min-h-screen flex flex-col items-center mainPX justify-between bg-[url('/bgs/testbg.jpeg')] bg-cover bg-center">
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-[#00000052] z-0" />
 
@@ -21,9 +21,7 @@ const Home = () => {
         <main className="relative flex justify-center MAX_W w-full h-full mt-[15%] z-10">
           <div id="InfoContainer" className="flex flex-col items-center gap-4 text-white text-center"  >
             {/* Stars */}
-            <div id="Stars" className="flex gap-1">
-              {[1, 2, 3, 4, 5].map((_, i) => ( <img key={i} src="/icons/star.png" className="w-[20px]" alt="star" /> ))}
-            </div>
+            <FiveStars />
 
             {/* Sub-title */}
             <h1 className="tracking-[1px] font-extralight uppercase">
@@ -47,11 +45,7 @@ const Home = () => {
       </section>
 
       {/* Mobile bookings bar */}
-      {isMobile && (
-        <div className="relative z-50">
-          <BookingsBarMobile />
-        </div>
-      )}
+      {isMobile && <div className="relative z-50"><BookingsBarMobile /></div>}
     </>
   );
 };

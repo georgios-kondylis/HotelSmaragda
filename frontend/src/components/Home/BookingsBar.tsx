@@ -38,7 +38,7 @@ const BookingsBar = () => {
   };
 
   return (
-    <main className="fixed bottom-[2%] w-full MAX_W mainPX flex items-center justify-center text-nowrap z-20">
+    <main className="absolute bottom-[2%] w-full MAX_W mainPX flex items-center justify-center text-nowrap z-20">
       <div className="bg-white flex items-center shadow-lg rounded-md md:text-[14px] lg:text-[16px]">
         {/* Check in */}
         <div className="relative border-r max-md:border-b border-[#b9905468] flex-1 max-md:border-r-0 max-md:w-full">
@@ -81,7 +81,7 @@ const BookingsBar = () => {
           </div>
           {adultsOpen && (
             <div className="absolute left-0 bottom-[60px] mt-2 bg-white shadow-md rounded-md z-20 w-full overflow-hidden">
-              {[1, 2, 3, 4, 5].map((num) => (
+              {[1, 2, 3, 4].map((num) => (
                 <div key={num} onClick={() => {setAdults(num); closeAll(); }}
                      className={`px-4 py-2 hover:bg-[#00000064] cursor-pointer ${ adults === num ? "bg-[#b99154] text-white" : "" }`}
                 >
@@ -102,7 +102,7 @@ const BookingsBar = () => {
           </div>
           {childrenOpen && (
             <div className="absolute left-0 bottom-[60px] mt-2 bg-white shadow-md rounded-md z-20 w-full overflow-hidden">
-              {[0, 1, 2, 3, 4].map((num) => (
+              {[0, 1, 2, 3].map((num) => (
                 <div key={num} onClick={() => {setChildren(num);closeAll();}} 
                      className={`px-4 py-2 hover:bg-[#00000064] cursor-pointer ${ children === num ? "bg-[#b99154] text-white" : "" }`}
                 >
@@ -117,17 +117,17 @@ const BookingsBar = () => {
         <div className="relative border-r border-[#b9905468] cursor-pointer flex-1">
           <div onClick={toggleRooms} className="flex px-6 max-lg:px-2 py-4 items-center justify-between w-full text-gray-700 txtElegant">
             <span>
-              {rooms} Room{rooms > 1 ? "s" : ""}
+              {rooms} Bedroom{rooms > 1 ? "s" : ""}
             </span>
             <ChevronDown className="w-4 h-4 ml-2 text-[#b99154]" />
           </div>
           {roomsOpen && (
             <div className="absolute left-0 bottom-[60px] mt-2 bg-white shadow-md rounded-md z-20 w-full overflow-hidden">
-              {[1, 2, 3, 4].map((num) => (
+              {[1, 2,].map((num) => (
                 <div key={num} onClick={() => { setRooms(num); closeAll();}}
                      className={`px-4 py-2 hover:bg-[#00000064] cursor-pointer ${rooms === num ? "bg-[#b99154] text-white" : ""}`}
                 >
-                  {num} Room{num > 1 ? "s" : ""}
+                  {num} Bedroom{num > 1 ? "s" : ""}
                 </div>
               ))}
             </div>
@@ -144,3 +144,5 @@ const BookingsBar = () => {
 };
 
 export default BookingsBar;
+
+/* Change 1 / 2 Rooms to studio for 1 room or apartment for 2 rooms */
